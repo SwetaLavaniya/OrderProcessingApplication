@@ -11,6 +11,8 @@ namespace OrderProcessingApplication.Tests.RuleEngine
             PaymentRuleEngine paymentRuleEngine = new PaymentRuleEngine();
             var result = paymentRuleEngine.GenerateSlipForShippingForPhysicalProduct();
             Assert.NotNull(result);
+            Assert.Equal("SlipGenerated", result);
+            
             
         }
     }
