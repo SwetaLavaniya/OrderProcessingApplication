@@ -2,9 +2,16 @@
 {
     public class PaymentRuleEngine
     {
-        public string GenerateSlipForShippingForPhysicalProduct()
+        public string GenerateSlipForShippingForPhysicalProduct(int? amount)
         {
-            return "SlipGenerated";
+            if(amount.HasValue)
+            {
+                return "SlipGenerated";
+            }
+            
+            return "SlipNotGenerated";
+            
+            
         }
     }
 }
