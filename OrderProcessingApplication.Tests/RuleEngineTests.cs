@@ -1,5 +1,4 @@
 ﻿using OrderProcessingApplication.BusinessRules.RuleEngine;
-using OrderProcessingApplication.Domain;
 using Xunit;
 
 namespace OrderProcessingApplication.Tests.RuleEngine
@@ -17,9 +16,9 @@ namespace OrderProcessingApplication.Tests.RuleEngine
         [InlineData(500)]
         public void GeneratePackingSlipIfPaymentDone(int? amount)
         {
-           var result = _paymentRuleEngine.GenerateSlipForShippingForPhysicalProduct(amount);
+            var result = _paymentRuleEngine.GenerateSlipForShippingForPhysicalProduct(amount);
             Assert.Equal("SlipGenerated", result);
-            
+
         }
 
         [Theory]
@@ -28,7 +27,7 @@ namespace OrderProcessingApplication.Tests.RuleEngine
         {
             var result = _paymentRuleEngine.GenerateSlipForShippingForPhysicalProduct(amount);
             Assert.Equal("SlipNotGenerated", result);
-            
+
         }
 
     }
