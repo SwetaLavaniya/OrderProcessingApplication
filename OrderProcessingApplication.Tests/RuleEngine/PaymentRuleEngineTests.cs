@@ -6,14 +6,12 @@ namespace OrderProcessingApplication.Tests.RuleEngine
     public class PaymentRuleEngineTests
     {
         [Fact]
-        public void ShouldGeneratePackingSlipForShippingForPhysicalProduct()
+        public void ShouldGeneratePackingSlip()
         {
             PaymentRuleEngine paymentRuleEngine = new PaymentRuleEngine();
             var result = paymentRuleEngine.GenerateSlipForShippingForPhysicalProduct();
             Assert.NotNull(result);
             Assert.Equal("SlipGenerated", result);
-            
-            
         }
     }
 }
