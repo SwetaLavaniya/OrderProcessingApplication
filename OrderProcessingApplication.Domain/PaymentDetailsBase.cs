@@ -2,7 +2,7 @@
 {
     public class PaymentDetailsBase
     {
-        public string ProductType { get; set; }
+        public ProductOption ProductType { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
         public int Quantity { get; set; }

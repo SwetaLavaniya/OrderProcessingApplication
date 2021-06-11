@@ -19,7 +19,7 @@ namespace OrderProcessingApplication.Processor
            // Arrange
             _request = new PaymentRequest
             {
-                ProductType = "Physical Product",
+                ProductType = ProductOption.PhysicalProduct,
                 Name = "Physical Product 1",
                 Code = "PP1",
                 Quantity = 1,
@@ -67,6 +67,16 @@ namespace OrderProcessingApplication.Processor
             Assert.Equal(_request.Code, details.Code);
             Assert.Equal(_request.Quantity, details.Quantity);
             Assert.Equal(_request.Amount, details.Amount);
+        }
+
+        [Theory]
+        [InlineData(PaymentResponseCode.PackingSlipGenerated, ProductOption.PhysicalProduct)]
+        [InlineData(PaymentResponseCode.DuplicatePackingSlipGenerated, ProductOption.Book)]
+        public void ShouldReturnExpectedResponseCode(PaymentResponseCode code, ProductOption option)
+        {
+            _request.ProductType = option;
+           var response =  _processor.ProcessPayment(_request);
+            Assert.Equal(code, response.ResponseCode);
         }
 
 
