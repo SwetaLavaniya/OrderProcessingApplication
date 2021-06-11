@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OrderProcessingApplication.Domain\OrderProcessingApplication.Domain.csproj" />
+    <ProjectReference Include="..\OrderProcessingApplication.Repository\OrderProcessingApplication.Repository.csproj" />
   </ItemGroup>
 
 </Project>

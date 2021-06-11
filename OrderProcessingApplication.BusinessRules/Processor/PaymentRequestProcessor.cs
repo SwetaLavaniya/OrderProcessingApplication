@@ -1,12 +1,13 @@
 ﻿using OrderProcessingApplication.Domain.Request;
 using OrderProcessingApplication.Domain.Response;
+using OrderProcessingApplication.Repository.Interface;
 using System;
 
 namespace OrderProcessingApplication.Processor
 {
     public class PaymentRequestProcessor
     {
-        public PaymentRequestProcessor(OrderProcessingApplication.Repository.Interface.IPaymentRequestProcessorRepository @object)
+        public PaymentRequestProcessor(IPaymentRequestProcessorRepository @object)
         {
         }
 
