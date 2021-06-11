@@ -22,24 +22,40 @@ namespace OrderProcessingApplication.Processor
                 throw new ArgumentNullException(nameof(request));
             }
 
-            
+
             _paymentRequestProcessorRepository.Save(CreatePaymentDetails<PaymentDetails>(request));
             var response = CreatePaymentDetails<PaymentResponse>(request);
-
-            // if else can also be converted to 
-            if (request.ProductType == ProductOption.PhysicalProduct)
-            {
-                response.ResponseCode = PaymentResponseCode.PackingSlipGenerated;
-            }
-            else if (request.ProductType == ProductOption.Book)
-            {
-                response.ResponseCode = PaymentResponseCode.DuplicatePackingSlipGenerated;
-            }
-
+            response.ResponseCode = SetProductType(request);
             return response;
         }
 
-        
+        private static PaymentResponseCode SetProductType(PaymentRequest request)
+        {
+            if (request.ProductType == ProductOption.PhysicalProduct)
+            {
+                return PaymentResponseCode.PackingSlipGenerated;
+            }
+            else if (request.ProductType == ProductOption.Book)
+            {
+                return PaymentResponseCode.DuplicatePackingSlipGenerated;
+            }
+            else if (request.ProductType == ProductOption.Membership)
+            {
+                return PaymentResponseCode.MembershipActivated;
+            }
+            else if (request.ProductType == ProductOption.UpgradeMembership)
+            {
+                return PaymentResponseCode.MembershipUpgraded;
+            }
+            else if (request.ProductType == ProductOption.Video)
+            {
+                return PaymentResponseCode.FreeFirstAidVideoAdded;
+            }
+           
+
+            return PaymentResponseCode.PackingSlipGenerated;
+        }
+
         private static T CreatePaymentDetails<T>(PaymentRequest request) where T: PaymentDetailsBase, new ()
         {
             return new T

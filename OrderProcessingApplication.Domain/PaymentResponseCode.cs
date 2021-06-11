@@ -7,6 +7,7 @@
         MembershipActivated,
         MembershipUpgraded,
         FreeFirstAidVideoAdded,
-        GeneratedCommisionPaymentToAgent
+        GeneratedCommisionPaymentToAgent,
+        InvalidRequest
     }
 }
