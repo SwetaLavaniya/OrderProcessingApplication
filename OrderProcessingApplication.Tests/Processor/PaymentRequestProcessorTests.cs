@@ -7,6 +7,12 @@ namespace OrderProcessingApplication.Processor
 {
     public class PaymentRequestProcessorTests
     {
+        private PaymentRequestProcessor _processor;
+
+        public PaymentRequestProcessorTests()
+        {
+            _processor = new PaymentRequestProcessor();
+        }
         [Fact]
         public void ShouldReturnPaymentResponse()
         {
@@ -21,10 +27,8 @@ namespace OrderProcessingApplication.Processor
 
             };
 
-            var processor = new PaymentRequestProcessor();
-
             // Act
-            PaymentResponse response = processor.ProcessPayment(request);
+            PaymentResponse response = _processor.ProcessPayment(request);
 
             // Assert
             Assert.NotNull(response);
@@ -36,10 +40,10 @@ namespace OrderProcessingApplication.Processor
 
         }
 
+        [Fact]
         public void ShouldThrowNullExceptionWhenRequestIsNull()
         {
-            var processor = new PaymentRequestProcessor();
-            var exception = Assert.Throws<ArgumentNullException>(() => processor.ProcessPayment(null));
+           var exception = Assert.Throws<ArgumentNullException>(() => _processor.ProcessPayment(null));
             Assert.Equal("request", exception.ParamName);
         }
     }
