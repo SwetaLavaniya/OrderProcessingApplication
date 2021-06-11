@@ -22,22 +22,21 @@ namespace OrderProcessingApplication.Processor
                 throw new ArgumentNullException(nameof(request));
             }
 
-            _paymentRequestProcessorRepository.Save(new PaymentDetails {
-                ProductType = request.ProductType,
-                Name = request.Name,
-                Code = request.Code,
-                Quantity = request.Quantity,
-                Amount = request.Amount
+            _paymentRequestProcessorRepository.Save(CreatePaymentDetails<PaymentDetails>(request));
 
-            });
+            return CreatePaymentDetails<PaymentResponse>(request);
+        }
 
-            return new PaymentResponse
+        private static T CreatePaymentDetails<T>(PaymentRequest request) where T: PaymentDetailsBase, new ()
+        {
+            return new T
             {
                 ProductType = request.ProductType,
                 Name = request.Name,
                 Code = request.Code,
                 Quantity = request.Quantity,
                 Amount = request.Amount
+
             };
         }
     }
