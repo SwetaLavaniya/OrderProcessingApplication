@@ -1,6 +1,6 @@
-﻿namespace OrderProcessingApplication.Processor
+﻿namespace OrderProcessingApplication.Domain.Response
 {
-    internal class PaymentResponse
+    public class PaymentResponse
     {
         public string ProductType { get; set; }
         public string Name { get; set; }

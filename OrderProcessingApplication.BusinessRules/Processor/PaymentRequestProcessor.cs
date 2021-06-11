@@ -1,14 +1,15 @@
-﻿    using System;
+﻿using OrderProcessingApplication.Domain.Request;
+using OrderProcessingApplication.Domain.Response;
 
 namespace OrderProcessingApplication.Processor
 {
-    internal class PaymentRequestProcessor
+    public class PaymentRequestProcessor
     {
         public PaymentRequestProcessor()
         {
         }
 
-        internal PaymentResponse ProcessPayment(PaymentRequest request)
+        public PaymentResponse ProcessPayment(PaymentRequest request)
         {
             return new PaymentResponse
             {

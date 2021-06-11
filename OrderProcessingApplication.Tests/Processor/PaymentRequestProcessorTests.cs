@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using OrderProcessingApplication.Domain.Request;
+using OrderProcessingApplication.Domain.Response;
 using Xunit;
 
 namespace OrderProcessingApplication.Processor
@@ -18,13 +17,13 @@ namespace OrderProcessingApplication.Processor
                 Code = "PP1",
                 Quantity = 1,
                 Amount = 550
-                
+
             };
 
             var processor = new PaymentRequestProcessor();
 
             // Act
-            PaymentResponse response =  processor.ProcessPayment(request);
+            PaymentResponse response = processor.ProcessPayment(request);
 
             // Assert
             Assert.NotNull(response);

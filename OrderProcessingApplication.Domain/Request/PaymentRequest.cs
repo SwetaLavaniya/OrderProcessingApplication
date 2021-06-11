@@ -1,6 +1,6 @@
-﻿namespace OrderProcessingApplication.Processor
+﻿namespace OrderProcessingApplication.Domain.Request
 {
-    internal class PaymentRequest
+    public class PaymentRequest
     {
         public string ProductType { get; set; }
         public string Name { get; set; }
