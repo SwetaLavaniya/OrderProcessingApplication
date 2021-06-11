@@ -1,4 +1,4 @@
-﻿namespace OrderProcessingApplication.Domain.Products
+﻿namespace OrderProcessingApplication.Domain
 {
     class UpgradeMembership
     {
