@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 
 namespace OrderProcessingApplication.Processor
 {
@@ -10,7 +10,14 @@ namespace OrderProcessingApplication.Processor
 
         internal PaymentResponse ProcessPayment(PaymentRequest request)
         {
-            throw new NotImplementedException();
+            return new PaymentResponse
+            {
+                ProductType = request.ProductType,
+                Name = request.Name,
+                Code = request.Code,
+                Quantity = request.Quantity,
+                Amount = request.Amount
+            };
         }
     }
 }
