@@ -6,7 +6,7 @@ namespace OrderProcessingApplication.Processor
 {
     public class PaymentRequestProcessor
     {
-        public PaymentRequestProcessor()
+        public PaymentRequestProcessor(OrderProcessingApplication.Repository.Interface.IPaymentRequestProcessorRepository @object)
         {
         }
 
