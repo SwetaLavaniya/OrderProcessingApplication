@@ -1,5 +1,6 @@
 ﻿using OrderProcessingApplication.Domain.Request;
 using OrderProcessingApplication.Domain.Response;
+using System;
 
 namespace OrderProcessingApplication.Processor
 {
@@ -11,6 +12,11 @@ namespace OrderProcessingApplication.Processor
 
         public PaymentResponse ProcessPayment(PaymentRequest request)
         {
+            if (request == null)
+            {
+                throw new ArgumentNullException(nameof(request));
+            }
+
             return new PaymentResponse
             {
                 ProductType = request.ProductType,

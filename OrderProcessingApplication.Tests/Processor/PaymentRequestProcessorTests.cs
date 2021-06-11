@@ -1,5 +1,6 @@
 ﻿using OrderProcessingApplication.Domain.Request;
 using OrderProcessingApplication.Domain.Response;
+using System;
 using Xunit;
 
 namespace OrderProcessingApplication.Processor
@@ -7,7 +8,7 @@ namespace OrderProcessingApplication.Processor
     public class PaymentRequestProcessorTests
     {
         [Fact]
-        public void ReturnSuccessPaymentResponseWithPaymentRequestDetails()
+        public void ShouldReturnPaymentResponse()
         {
             // Arrange
             var request = new PaymentRequest
@@ -33,6 +34,13 @@ namespace OrderProcessingApplication.Processor
             Assert.Equal(request.Quantity, response.Quantity);
             Assert.Equal(request.Amount, response.Amount);
 
+        }
+
+        public void ShouldThrowNullExceptionWhenRequestIsNull()
+        {
+            var processor = new PaymentRequestProcessor();
+            var exception = Assert.Throws<ArgumentNullException>(() => processor.ProcessPayment(null));
+            Assert.Equal("request", exception.ParamName);
         }
     }
 }
